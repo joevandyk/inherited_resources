@@ -4,30 +4,35 @@ module InheritedResources
 
     # GET /resources
     def index(options={}, &block)
+      options ||= {}
       respond_with(*(with_chain(collection) << options), &block)
     end
     alias :index! :index
 
     # GET /resources/1
     def show(options={}, &block)
+      options ||= {}
       respond_with(*(with_chain(resource) << options), &block)
     end
     alias :show! :show
 
     # GET /resources/new
     def new(options={}, &block)
+      options ||= {}
       respond_with(*(with_chain(build_resource) << options), &block)
     end
     alias :new! :new
 
     # GET /resources/1/edit
     def edit(options={}, &block)
+      options ||= {}
       respond_with(*(with_chain(resource) << options), &block)
     end
     alias :edit! :edit
 
     # POST /resources
     def create(options={}, &block)
+      options ||= {}
       object = build_resource
 
       if create_resource(object)
@@ -40,6 +45,7 @@ module InheritedResources
 
     # PUT /resources/1
     def update(options={}, &block)
+      options ||= {}
       object = resource
 
       if update_resource(object, resource_params)
@@ -52,6 +58,7 @@ module InheritedResources
 
     # DELETE /resources/1
     def destroy(options={}, &block)
+      options ||= {}
       object = resource
       options[:location] ||= smart_collection_url
 
